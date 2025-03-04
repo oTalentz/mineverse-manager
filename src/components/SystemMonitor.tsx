@@ -1,21 +1,34 @@
 
-import React, { useState, useEffect } from 'react';
-import { Cpu, Database, HardDrive, MemoryStick } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Cpu, HardDrive, MemoryStick } from 'lucide-react';
 
 const SystemMonitor: React.FC = () => {
   const [cpuUsage, setCpuUsage] = useState(0);
   const [ramUsage, setRamUsage] = useState(0);
   const [diskUsage, setDiskUsage] = useState(0);
+  const intervalRef = useRef<number | null>(null);
   
   useEffect(() => {
     // Simulate changing system stats
-    const interval = setInterval(() => {
+    const updateStats = () => {
       setCpuUsage(Math.floor(Math.random() * 35) + 5);  // 5% - 40%
       setRamUsage(Math.floor(Math.random() * 45) + 25); // 25% - 70%
       setDiskUsage(Math.floor(Math.random() * 20) + 40); // 40% - 60%
-    }, 3000);
+    };
     
-    return () => clearInterval(interval);
+    // Atualização inicial
+    updateStats();
+    
+    // Configurar intervalo para atualizações subsequentes
+    intervalRef.current = window.setInterval(updateStats, 3000);
+    
+    // Limpar intervalo quando o componente for desmontado
+    return () => {
+      if (intervalRef.current !== null) {
+        window.clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
   }, []);
   
   const getUsageColor = (percentage: number): string => {
