@@ -8,6 +8,7 @@ interface GlassCardProps {
   onClick?: () => void;
   hoverEffect?: boolean;
   darkGlass?: boolean;
+  style?: React.CSSProperties;
 }
 
 const GlassCard: React.FC<GlassCardProps> = ({
@@ -16,6 +17,7 @@ const GlassCard: React.FC<GlassCardProps> = ({
   onClick,
   hoverEffect = true,
   darkGlass = false,
+  style,
 }) => {
   return (
     <div
@@ -26,6 +28,7 @@ const GlassCard: React.FC<GlassCardProps> = ({
         hoverEffect && 'hover:shadow-2xl hover:scale-[1.02] cursor-pointer',
         className
       )}
+      style={style}
     >
       {children}
     </div>
