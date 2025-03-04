@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Cpu, Database, Memory, HardDrive } from 'lucide-react';
+import { Cpu, Database, HardDrive, MemoryStick } from 'lucide-react';
 
 const SystemMonitor: React.FC = () => {
   const [cpuUsage, setCpuUsage] = useState(0);
@@ -54,7 +54,7 @@ const SystemMonitor: React.FC = () => {
         <div>
           <div className="flex justify-between mb-1">
             <div className="flex items-center gap-2">
-              <Memory className="h-4 w-4 text-purple-500" />
+              <MemoryStick className="h-4 w-4 text-purple-500" />
               <span className="text-sm">RAM</span>
             </div>
             <span className={`text-sm font-medium ${getUsageColor(ramUsage)}`}>{ramUsage}%</span>
