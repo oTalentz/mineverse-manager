@@ -1,12 +1,33 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Search, Filter, Download } from 'lucide-react';
+import { Search, Filter, Download, Settings, RefreshCw } from 'lucide-react';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import Navbar from '@/components/Navbar';
 import VersionCard from '@/components/VersionCard';
+import LauncherLogs from '@/components/LauncherLogs';
+import { toast } from '@/hooks/use-toast';
 
 const Versions = () => {
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  
+  const handleRefreshVersions = () => {
+    setIsRefreshing(true);
+    
+    toast({
+      title: "Atualizando versões",
+      description: "Verificando novas versões disponíveis...",
+    });
+    
+    // Simular atualização da lista de versões
+    setTimeout(() => {
+      setIsRefreshing(false);
+      toast({
+        title: "Lista atualizada",
+        description: "Todas as versões estão atualizadas!",
+      });
+    }, 2000);
+  };
+
   const versions = [
     {
       version: "1.20.4",
@@ -183,6 +204,14 @@ const Versions = () => {
             <Filter className="h-4 w-4" />
             Filtrar
           </Button>
+          <Button variant="outline" className="gap-2" onClick={handleRefreshVersions} disabled={isRefreshing}>
+            {isRefreshing ? (
+              <RefreshCw className="h-4 w-4 animate-spin" />
+            ) : (
+              <RefreshCw className="h-4 w-4" />
+            )}
+            Atualizar
+          </Button>
           <Button className="gap-2">
             <Download className="h-4 w-4" />
             Baixar Versão
@@ -198,18 +227,71 @@ const Versions = () => {
           <Button variant="outline">Instaladas</Button>
         </div>
         
-        {/* Version List */}
-        <div className="space-y-4">
-          {versions.map((version, index) => (
-            <VersionCard
-              key={index}
-              version={version.version}
-              releaseDate={version.releaseDate}
-              type={version.type}
-              isInstalled={version.isInstalled}
-              size={version.size}
-            />
-          ))}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
+            {/* Version List */}
+            <div className="space-y-4">
+              {versions.slice(0, 5).map((version, index) => (
+                <VersionCard
+                  key={index}
+                  version={version.version}
+                  releaseDate={version.releaseDate}
+                  type={version.type}
+                  isInstalled={version.isInstalled}
+                  size={version.size}
+                />
+              ))}
+            </div>
+          </div>
+          
+          <div>
+            {/* Launcher Logs */}
+            <LauncherLogs />
+            
+            {/* Quick Settings */}
+            <div className="glass rounded-xl p-4 mt-6">
+              <h3 className="text-lg font-medium mb-4">Configurações Rápidas</h3>
+              
+              <div className="space-y-4">
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm font-medium">Memória RAM (GB)</label>
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm">2</Button>
+                    <Button variant="outline" size="sm">4</Button>
+                    <Button variant="default" size="sm">8</Button>
+                    <Button variant="outline" size="sm">16</Button>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <label className="text-sm font-medium">Java automático</label>
+                  <div className="flex items-center h-6">
+                    <input
+                      type="checkbox"
+                      defaultChecked
+                      className="h-4 w-4 rounded border-gray-300"
+                    />
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <label className="text-sm font-medium">Otimizar performance</label>
+                  <div className="flex items-center h-6">
+                    <input
+                      type="checkbox"
+                      defaultChecked
+                      className="h-4 w-4 rounded border-gray-300"
+                    />
+                  </div>
+                </div>
+                
+                <Button variant="outline" className="w-full">
+                  <Settings className="h-4 w-4 mr-2" />
+                  Configurações Avançadas
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </>
