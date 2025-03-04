@@ -30,26 +30,131 @@ const Versions = () => {
       size: "356 MB"
     },
     {
-      version: "23w46a",
-      releaseDate: "15/11/2023",
-      type: "snapshot" as const,
+      version: "1.19.4",
+      releaseDate: "14/03/2023",
+      type: "release" as const,
       isInstalled: false,
-      size: "380 MB"
+      size: "352 MB"
     },
     {
-      version: "23w42a",
-      releaseDate: "18/10/2023",
-      type: "snapshot" as const,
+      version: "1.19.2",
+      releaseDate: "28/07/2022",
+      type: "release" as const,
       isInstalled: false,
-      size: "375 MB"
+      size: "340 MB"
     },
     {
-      version: "1.21-pre1",
-      releaseDate: "20/01/2024",
-      type: "beta" as const,
+      version: "1.18.2",
+      releaseDate: "28/02/2022",
+      type: "release" as const,
       isInstalled: false,
-      size: "390 MB"
+      size: "325 MB"
     },
+    {
+      version: "1.17.1",
+      releaseDate: "06/07/2021",
+      type: "release" as const,
+      isInstalled: false,
+      size: "318 MB"
+    },
+    {
+      version: "1.16.5",
+      releaseDate: "15/01/2021",
+      type: "release" as const,
+      isInstalled: false,
+      size: "302 MB"
+    },
+    {
+      version: "1.15.2",
+      releaseDate: "21/01/2020",
+      type: "release" as const,
+      isInstalled: false,
+      size: "285 MB"
+    },
+    {
+      version: "1.14.4",
+      releaseDate: "19/07/2019",
+      type: "release" as const,
+      isInstalled: false,
+      size: "268 MB"
+    },
+    {
+      version: "1.13.2",
+      releaseDate: "22/10/2018",
+      type: "release" as const,
+      isInstalled: false,
+      size: "252 MB"
+    },
+    {
+      version: "1.12.2",
+      releaseDate: "18/09/2017",
+      type: "release" as const,
+      isInstalled: false,
+      size: "230 MB"
+    },
+    {
+      version: "1.11.2",
+      releaseDate: "21/12/2016",
+      type: "release" as const,
+      isInstalled: false,
+      size: "215 MB"
+    },
+    {
+      version: "1.10.2",
+      releaseDate: "26/06/2016",
+      type: "release" as const,
+      isInstalled: false,
+      size: "195 MB"
+    },
+    {
+      version: "1.9.4",
+      releaseDate: "10/05/2016",
+      type: "release" as const,
+      isInstalled: false,
+      size: "180 MB"
+    },
+    {
+      version: "1.8.9",
+      releaseDate: "09/12/2015",
+      type: "release" as const,
+      isInstalled: false,
+      size: "165 MB"
+    },
+    {
+      version: "1.7.10",
+      releaseDate: "26/06/2014",
+      type: "release" as const,
+      isInstalled: false,
+      size: "150 MB"
+    },
+    {
+      version: "1.6.4",
+      releaseDate: "19/09/2013",
+      type: "release" as const,
+      isInstalled: false,
+      size: "135 MB"
+    },
+    {
+      version: "1.5.2",
+      releaseDate: "02/05/2013",
+      type: "release" as const,
+      isInstalled: false,
+      size: "120 MB"
+    },
+    {
+      version: "1.5.1",
+      releaseDate: "21/03/2013",
+      type: "release" as const,
+      isInstalled: false,
+      size: "118 MB"
+    },
+    {
+      version: "1.5",
+      releaseDate: "13/03/2013",
+      type: "release" as const,
+      isInstalled: false,
+      size: "115 MB"
+    }
   ];
 
   return (
