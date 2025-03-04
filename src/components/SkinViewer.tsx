@@ -1,8 +1,9 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Upload, Check, RefreshCw } from 'lucide-react';
+import { Upload, Check, RefreshCw, Download } from 'lucide-react';
 import GlassCard from './GlassCard';
+import { toast } from '@/components/ui/use-toast';
 
 interface SkinViewerProps {
   skinUrl: string;
@@ -15,6 +16,45 @@ const SkinViewer: React.FC<SkinViewerProps> = ({
   name,
   isActive = false,
 }) => {
+  const [loading, setLoading] = useState(false);
+  
+  const handleSkinAction = () => {
+    setLoading(true);
+    
+    // Simulate skin application process
+    setTimeout(() => {
+      if (isActive) {
+        toast({
+          title: "Alteração de skin iniciada",
+          description: `Preparando para alterar a skin ${name}...`,
+        });
+      } else {
+        toast({
+          title: "Skin aplicada com sucesso!",
+          description: `A skin ${name} foi definida como sua skin atual.`,
+        });
+      }
+      setLoading(false);
+    }, 1500);
+  };
+  
+  const handleDownload = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    
+    toast({
+      title: "Download iniciado",
+      description: `Baixando a skin ${name}...`,
+    });
+    
+    // Simulate download
+    setTimeout(() => {
+      toast({
+        title: "Download concluído",
+        description: `A skin ${name} foi baixada com sucesso.`,
+      });
+    }, 2000);
+  };
+
   return (
     <GlassCard 
       className="overflow-hidden animate-pop"
@@ -34,18 +74,31 @@ const SkinViewer: React.FC<SkinViewerProps> = ({
       </div>
       <div className="p-4">
         <h3 className="font-medium mb-3">{name}</h3>
-        <div className="flex gap-2">
-          {isActive ? (
-            <Button className="w-full gap-1" variant="outline">
+        <div className="flex flex-col gap-2">
+          <Button 
+            className="w-full gap-1" 
+            variant={isActive ? "outline" : "default"}
+            onClick={handleSkinAction}
+            disabled={loading}
+          >
+            {loading ? (
+              <RefreshCw className="h-4 w-4 animate-spin" />
+            ) : isActive ? (
               <RefreshCw className="h-4 w-4" />
-              <span>Alterar</span>
-            </Button>
-          ) : (
-            <Button className="w-full gap-1">
+            ) : (
               <Check className="h-4 w-4" />
-              <span>Usar</span>
-            </Button>
-          )}
+            )}
+            <span>{isActive ? "Alterar" : "Usar"}</span>
+          </Button>
+          
+          <Button 
+            className="w-full gap-1" 
+            variant="secondary"
+            onClick={handleDownload}
+          >
+            <Download className="h-4 w-4" />
+            <span>Download</span>
+          </Button>
         </div>
       </div>
     </GlassCard>
