@@ -42,7 +42,7 @@ const DownloadModal: React.FC<DownloadModalProps> = ({ onClose }) => {
   const handleDownloadComplete = () => {
     // Simulando download do arquivo real
     const dummyLink = document.createElement('a');
-    dummyLink.href = '#';
+    dummyLink.href = '/MineVerseLauncher.exe';  // Este arquivo não existe, é apenas simulação
     dummyLink.setAttribute('download', 'MineVerseLauncher.exe');
     dummyLink.click();
     onClose();
