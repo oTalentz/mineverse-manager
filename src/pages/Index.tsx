@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Download, Gamepad2, Layers, Palette, Settings, ShieldCheck, Zap } from 'lucide-react';
+import { ArrowRight, Download, Gamepad2, Layers, Palette, Settings, ShieldCheck, Zap, Monitor } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import FeatureBox from '@/components/FeatureBox';
@@ -80,6 +80,12 @@ const Index = () => {
               <Download className="mr-2 h-5 w-5" />
               Baixar Launcher
             </Button>
+            <Link to="/launcher">
+              <Button variant="outline" className="text-base px-8 py-6" size="lg">
+                <Monitor className="mr-2 h-5 w-5" />
+                Acessar Launcher Online
+              </Button>
+            </Link>
             <Button variant="outline" className="text-base px-8 py-6" size="lg">
               <ArrowRight className="mr-2 h-5 w-5" />
               Explorar
@@ -139,6 +145,12 @@ const Index = () => {
               <Button variant="outline" className="gap-2">
                 <Settings className="w-5 h-5" />
                 Notícias
+              </Button>
+            </Link>
+            <Link to="/launcher">
+              <Button variant="default" className="gap-2">
+                <Monitor className="w-5 h-5" />
+                Launcher
               </Button>
             </Link>
           </div>

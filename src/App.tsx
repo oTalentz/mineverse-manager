@@ -10,6 +10,7 @@ import Profiles from "./pages/Profiles";
 import Skins from "./pages/Skins";
 import News from "./pages/News";
 import NotFound from "./pages/NotFound";
+import LauncherApp from "./pages/LauncherApp";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/profiles" element={<Profiles />} />
           <Route path="/skins" element={<Skins />} />
           <Route path="/news" element={<News />} />
+          <Route path="/launcher" element={<LauncherApp />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
