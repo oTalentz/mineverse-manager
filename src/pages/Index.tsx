@@ -1,13 +1,17 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Download, Gamepad2, Layers, Palette, Settings, ShieldCheck, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import FeatureBox from '@/components/FeatureBox';
 import Navbar from '@/components/Navbar';
+import DownloadModal from '@/components/DownloadModal';
+import { toast } from '@/hooks/use-toast';
 
 const Index = () => {
+  const [showDownloadModal, setShowDownloadModal] = useState(false);
+  
   const features = [
     {
       title: 'Gerenciamento de Versões',
@@ -47,6 +51,10 @@ const Index = () => {
     },
   ];
 
+  const handleDownloadLauncher = () => {
+    setShowDownloadModal(true);
+  };
+
   return (
     <>
       <AnimatedBackground />
@@ -68,7 +76,7 @@ const Index = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 animate-pop" style={{ animationDelay: '300ms' }}>
-            <Button className="text-base px-8 py-6" size="lg">
+            <Button className="text-base px-8 py-6" size="lg" onClick={handleDownloadLauncher}>
               <Download className="mr-2 h-5 w-5" />
               Baixar Launcher
             </Button>
@@ -136,6 +144,13 @@ const Index = () => {
           </div>
         </section>
       </main>
+      
+      {/* Download Modal */}
+      {showDownloadModal && (
+        <DownloadModal 
+          onClose={() => setShowDownloadModal(false)} 
+        />
+      )}
     </>
   );
 };
